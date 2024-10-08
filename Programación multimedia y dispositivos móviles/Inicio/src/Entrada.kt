@@ -18,7 +18,7 @@ fun main() {
     // NULL ES UN TIPO
     var apellido: String? = null // null
     // Nullpointerexception -> null safety
-    println(apellido?.length ?: "No se encuentra el apellido")
+    println(apellido?.length ?: "No se encuentra el apellido") // operador Elvis
 
     // existira con valor, pero no se cuando se inicia. Para utilizar
     // una variable de este tipo, tengo que iniciarla antes
