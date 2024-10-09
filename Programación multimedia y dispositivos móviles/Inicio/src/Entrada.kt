@@ -1,3 +1,5 @@
+                                                // TEMA 1
+
 fun main (args: Array<String>){
     println("Primera app kotlin")
 }// class Entrada{ psvm(){// cuerpo}}
@@ -22,7 +24,7 @@ fun main() {
 
     // existira con valor, pero no se cuando se inicia. Para utilizar
     // una variable de este tipo, tengo que iniciarla antes
-    lateinit var correo: String
+    lateinit var correo: String // Indico que esta variable se inicializará en algún momento
     correo = "borja@gmail.com"
     println(correo)
 
@@ -32,7 +34,7 @@ fun main() {
     // sout("asdasdasd "+variable+" asdasdasdads "+variable+" sdasasd")
     // souf("asdasdasd %s asdasdasdads %s sdasasd",variable1, variable2)
     println(
-        "Mi nombre es $nombre, mi apellido es ${apellido ?: "sin definir"} " +
+        "Mi nombre es $nombre, mi apellido es ${apellido ?: "sin definir"} " + // Necesita las llaves
                 "y mido $altura"
     )
 
