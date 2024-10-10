@@ -2,6 +2,7 @@
 
 fun main (args: Array<String>){
     println("Primera app kotlin")
+
 }// class Entrada{ psvm(){// cuerpo}}
 // fun nombre( nombreArgs: Tipo, nombreArgs: Tipo, nombreArgs: Tipo ): Retorno  { CUERPO }
 fun main() {
