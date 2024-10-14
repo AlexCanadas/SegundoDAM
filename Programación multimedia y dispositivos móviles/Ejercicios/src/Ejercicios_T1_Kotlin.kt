@@ -2,7 +2,7 @@ import kotlin.math.PI
 
 class Ejercicios_T1_Kotlin {
     // 1. Escribe un programa que pida al usuario dos números enteros y calcule su suma.
-    fun ejercicio1(): Int {
+    fun ejercicio1() {
         println("Introduce el primer número entero:")
         val op1 = readLine()?.toIntOrNull() ?: 0
         /* ? ejecuta toIntOrNull si el readLine NO es nulo,
@@ -10,14 +10,16 @@ class Ejercicios_T1_Kotlin {
            ?: operador Elvis asignará 0 si el valor es nulo */
         println("Introduce el segundo número entero:")
         val op2 = readLine()?.toIntOrNull() ?: 0
-        return op1 + op2
+        val resultado = op1 + op2
+        println("La suma es: $resultado")
     }
 
     // 2. Escribe un programa que pida el radio de un círculo y calcule su área. Utiliza la fórmula Área = π * radio^2.
-    fun ejercicio2(): Double {
+    fun ejercicio2() {
         println("Introduce el radio del círculo:")
         val radio = readLine()?.toDoubleOrNull() ?: 0.0
-        return PI * (radio * radio)
+        val resultado = PI * (radio * radio)
+        println("El área del círculo es: $resultado")
     }
 
     // 3. Escribe un programa que convierta grados Celsius a Fahrenheit. Usa la fórmula: F = C * 9/5 + 32.
@@ -200,14 +202,8 @@ fun main() {
         val opcion = readLine()
 
         when (opcion) {
-            "1" -> {
-                val resultado = ejercicios.ejercicio1()
-                println("La suma es: $resultado")
-            }
-            "2" -> {
-                val resultado = ejercicios.ejercicio2()
-                println("El área del círculo es: $resultado")
-            }
+            "1" -> ejercicios.ejercicio1()
+            "2" -> ejercicios.ejercicio2()
             "3" -> ejercicios.ejercicio3()
             "4" -> ejercicios.ejercicio4()
             "5" -> ejercicios.ejercicio5()
