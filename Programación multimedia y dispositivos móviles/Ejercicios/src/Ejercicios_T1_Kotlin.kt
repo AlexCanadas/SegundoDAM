@@ -76,8 +76,8 @@ class Ejercicios_T1_Kotlin {
         }
     }
 
-    // 7. Escribe un programa que simule una calculadora básica. El programa debe pedir al usuario dos números y una operación
-    // (suma, resta, multiplicación, división) y mostrar el resultado.
+    /* 7. Escribe un programa que simule una calculadora básica. El programa debe pedir al usuario dos números y una operación
+     (suma, resta, multiplicación, división) y mostrar el resultado. */
     fun ejercicio7() {
         // Menú calculadora con while
         while (true) { // Parará solo con la opción 5
@@ -124,6 +124,7 @@ class Ejercicios_T1_Kotlin {
                 println("Operación inválida o no se puede dividir por cero.")
             }
         }
+
     }
 
     // 8. Escribe un programa que determine si un número ingresado por el usuario es primo
@@ -147,6 +148,32 @@ class Ejercicios_T1_Kotlin {
             println("Por favor, ingrese un número entero positivo.")
         }
     }
+
+    /* 9. Escribe un programa que maneje información de usuarios, donde algunos campos pueden ser opcionales (es decir, pueden ser null).
+        En el programa, ni el apellido ni la edad pueden ser null. Si no se proporciona la edad, debes manejar un valor por defecto.
+        Crear una función que reciba el nombre,
+        apellido y edad y devuelva un mensaje con la información completa del usuario. Maneja de forma segura los posibles nulos */
+    fun ejercicio9() {
+        println("Introduce el nombre del usuario:")
+        val nombre = readLine() ?: "Unknown" // Usar un valor por defecto si es null
+
+        println("Introduce el apellido del usuario:")
+        val apellido = readLine() // El apellido no puede ser null
+
+        if (apellido.isNullOrEmpty()) {
+            println("El apellido no puede ser nulo o vacío.")
+            return
+        }
+
+        println("Introduce la edad del usuario:")
+        val edadInput = readLine()
+        val edad = edadInput?.toIntOrNull() ?: 18 // Valor por defecto si la edad es null
+
+        // Mostrar la información del usuario
+        val mensaje = "Información del usuario: Nombre: $nombre, Apellido: $apellido, Edad: $edad"
+        println(mensaje)
+    }
+
 }
 
 fun main() {
@@ -163,7 +190,8 @@ fun main() {
         println("6. Calcular el factorial de un número")
         println("7. Calculadora básica")
         println("8. Determinar si un número es primo")
-        println("9. Salir")
+        println("9. Manejo de información de usuarios")
+        println("10. Salir")
 
         print("Ingrese el número de ejercicio que desea ejecutar: ")
         val opcion = readLine()
@@ -183,12 +211,13 @@ fun main() {
             "6" -> ejercicios.ejercicio6()
             "7" -> ejercicios.ejercicio7()
             "8" -> ejercicios.ejercicio8()
-            "9" -> {
+            "9" -> ejercicios.ejercicio9()
+            "10" -> {
                 println("Saliendo del programa. ¡Hasta luego!")
                 continuar = false
             }
             else -> {
-                println("Opción no válida. Por favor, ingrese un número del 1 al 9.")
+                println("Opción no válida. Por favor, ingrese un número del 1 al 10.")
             }
         }
         println()
