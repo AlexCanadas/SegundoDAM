@@ -5,6 +5,9 @@ class Ejercicios_T1_Kotlin {
     fun ejercicio1(): Int {
         println("Introduce el primer número entero:")
         val op1 = readLine()?.toIntOrNull() ?: 0
+        /* ? ejecuta toIntOrNull si el readLine NO es nulo,
+           toIntOrNull convierte a Int si puede si no a null,
+           ?: operador Elvis asignará 0 si el valor es nulo */
         println("Introduce el segundo número entero:")
         val op2 = readLine()?.toIntOrNull() ?: 0
         return op1 + op2
