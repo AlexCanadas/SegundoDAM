@@ -8,6 +8,6 @@ public class Entrada {
         gestionFicheros.trabajoFicherosBase();*/
 
         File carpetaCodigosUE = new File("/Users/Alex/Desktop/GitHub");
-        GestionFicheros.listarArchivos(carpetaCodigosUE);
+        GestionFicheros.funcionRecursiva(carpetaCodigosUE);
     }
 }

@@ -62,13 +62,13 @@ public class GestionFicheros {
 
     }
 
-    public static void listarArchivos(File dir) {
+    public static void funcionRecursiva(File dir) {
         // Iterar sobre los elementos del directorio que le pasemos
         for (File item : dir.listFiles()) {
             if (!item.isHidden()) {
                 if (item.isDirectory()) {
                     System.out.println("\t"+item.getName()); // Imprimir nombre de la carpeta
-                    listarArchivos(item); // Llamar a la función recursivamente para explorar la carpeta
+                    funcionRecursiva(item); // Llamar a la función recursivamente para explorar la carpeta
                 } else {
                     System.out.println("\t"+"\t"+item.getName()); // Imprimir nombre del archivo
                 }
