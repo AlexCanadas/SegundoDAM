@@ -8,7 +8,7 @@ public class GestionFicheros {
         // FILE -> ruta (absolutas o relativas)
         // WINDOWS -> C:\\asasd\\asdasd\\asdasd
         // fisico y logico
-        File file = new File("src/resources/ejemplo1.txt");
+        File file = new File("src/resources/ficheros/ejemplo.txt");
         // logico
         File carpeta = new File("src/resources/ficheros");
         if (!file.exists()) {
@@ -43,7 +43,7 @@ public class GestionFicheros {
 
         // sacar el nombre de todas las carpetas y ficheros de una ruta
         // de forma RECURSIVO -> hasta que no encuentre mas carpetas
-        File carpetaCodigosUE = new File("/Users/borja/Documents/GitHub/CodigosUE");
+        File carpetaCodigosUE = new File("/Users/Alex/Desktop/GitHub");
         for (File item : carpetaCodigosUE.listFiles()) {
             if (!item.isHidden()){
                 if (item.isDirectory()){
@@ -60,6 +60,20 @@ public class GestionFicheros {
             }
         }
 
+    }
+
+    public static void listarArchivos(File dir) {
+        // Iterar sobre los elementos del directorio que le pasemos
+        for (File item : dir.listFiles()) {
+            if (!item.isHidden()) {
+                if (item.isDirectory()) {
+                    System.out.println("\t"+item.getName()); // Imprimir nombre de la carpeta
+                    listarArchivos(item); // Llamar a la función recursivamente para explorar la carpeta
+                } else {
+                    System.out.println("\t"+"\t"+item.getName()); // Imprimir nombre del archivo
+                }
+            }
+        }
     }
 
 }
