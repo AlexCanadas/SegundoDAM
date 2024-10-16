@@ -63,17 +63,34 @@ public class GestionFicheros {
     }
 
     public static void funcionRecursiva(File dir) {
-        // Iterar sobre los elementos del directorio que le pasemos
-        for (File item : dir.listFiles()) {
-            if (!item.isHidden()) {
-                if (item.isDirectory()) {
-                    System.out.println("\t"+item.getName()); // Imprimir nombre de la carpeta
-                    funcionRecursiva(item); // Llamar a la función recursivamente para explorar la carpeta
+        // Comprobar si dir es un directorio
+        if (dir.isDirectory()) {
+            try {
+                // Iterar sobre los elementos del directorio que le pasemos
+                File[] archivos = dir.listFiles(); // creamos un array de obj File
+                if (archivos != null) { // Verificar que no es null
+                    for (File item : archivos) {
+                        if (!item.isHidden()) {
+                            if (item.isDirectory()) {
+                                System.out.println("\t" + item.getName()); // Imprimir nombre de la carpeta
+                                funcionRecursiva(item); // Llamar a la función recursivamente para explorar la carpeta
+                            } else {
+                                System.out.println("\t\t" + item.getName()); // Imprimir nombre del archivo
+                            }
+                        }
+                    }
                 } else {
-                    System.out.println("\t"+"\t"+item.getName()); // Imprimir nombre del archivo
+                    System.out.println("No se puede acceder al contenido de " + dir.getAbsolutePath());
                 }
+            } catch (SecurityException e) {
+                System.out.println("Acceso denegado a " + dir.getAbsolutePath());
+            } catch (Exception e) {
+                System.out.println("Ocurrió un error al acceder a " + dir.getAbsolutePath() + ": " + e.getMessage());
             }
+        } else {
+            System.out.println(dir.getAbsolutePath() + " no es un directorio.");
         }
     }
+
 
 }
