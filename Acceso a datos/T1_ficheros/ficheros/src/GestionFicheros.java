@@ -69,13 +69,13 @@ public class GestionFicheros {
                 // Iterar sobre los elementos del directorio que le pasemos
                 File[] archivos = dir.listFiles(); // creamos un array de obj File
                 if (archivos != null) { // Verificar que no es null
-                    for (File item : archivos) {
+                    for (File item : archivos) { // Recorremos archivos[] con la var item de tipo File
                         if (!item.isHidden()) {
                             if (item.isDirectory()) {
-                                System.out.println("\t" + item.getName()); // Imprimir nombre de la carpeta
+                                System.out.println("\t" + item.getName()); // Imprimir nombre de la carpeta con una tabulación
                                 funcionRecursiva(item); // Llamar a la función recursivamente para explorar la carpeta
                             } else {
-                                System.out.println("\t\t" + item.getName()); // Imprimir nombre del archivo
+                                System.out.println("\t\t" + item.getName()); // Imprimir nombre del archivo con 2 tabulaciones
                             }
                         }
                     }
