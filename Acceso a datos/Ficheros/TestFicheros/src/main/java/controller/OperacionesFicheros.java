@@ -105,10 +105,33 @@ public class OperacionesFicheros {
             }
         }
     }
-    public void escrituraObjectos() {
-        Usuario usuario = new Usuario();
-        usuario.
+    public void escrituraObjectos(String path) {
+        Usuario usuario = new Usuario(1, "Borja", "Martin", "correo", "123A", 123);
+        File file = new File(path);
 
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                System.out.println("No tienes permisos de creación");
+            }
+        }
 
+        ObjectOutputStream oos = null;
+
+        try {
+            oos = new ObjectOutputStream(new FileOutputStream(file));
+            oos.writeObject(usuario);
+        } catch (FileNotFoundException e) {
+            System.out.println("Fichero indicado incorrecto");
+        } catch (IOException e) {
+                System.out.println("No puedes escribir");
+        } finally {
+            try {
+                oos.close();
+            } catch (IOException | NullPointerException e) {
+                System.out.println("El fichero no se puede cerrar");
+            }
+        }
     }
 }

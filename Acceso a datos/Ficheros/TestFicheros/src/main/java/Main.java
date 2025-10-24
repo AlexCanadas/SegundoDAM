@@ -1,4 +1,5 @@
 import controller.OperacionesFicheros;
+import model.Usuario;
 
 public class Main {
 
@@ -7,6 +8,8 @@ public class Main {
         // operaciones.lecturaFicheros("src/main/java/ficheros/ejemplo.txt");
         // operaciones.lecturaFicherosBuffer("src/main/java/ficheros/ejemplo.txt");
         // operaciones.escrituraSimple("src/main/java/ficheros/escritura.txt");
-        operaciones.escrituraCompleja("src/main/java/ficheros/escrituraBuffer.txt");
+        // operaciones.escrituraCompleja("src/main/java/ficheros/escrituraBuffer.txt");
+        operaciones.escrituraObjectos("src/main/java/ficheros/escrituraObjetos.obj");
+
     }
 }
