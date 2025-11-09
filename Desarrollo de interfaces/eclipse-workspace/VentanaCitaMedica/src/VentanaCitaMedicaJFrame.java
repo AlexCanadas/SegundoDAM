@@ -63,7 +63,6 @@ public class VentanaCitaMedicaJFrame extends JFrame {
 
 		textFieldNombre = new JTextField();
 		panelFormulario.add(textFieldNombre);
-		textFieldNombre.setColumns(10);
 
 		JLabel lblApellido = new JLabel("Apellido:");
 		lblApellido.setFont(new Font("Tahoma", Font.BOLD, 10));
@@ -71,7 +70,6 @@ public class VentanaCitaMedicaJFrame extends JFrame {
 
 		textFieldApellido = new JTextField();
 		panelFormulario.add(textFieldApellido);
-		textFieldApellido.setColumns(10);
 
 		JLabel lblTelefono = new JLabel("Teléfono:");
 		lblTelefono.setFont(new Font("Tahoma", Font.BOLD, 10));
@@ -79,7 +77,6 @@ public class VentanaCitaMedicaJFrame extends JFrame {
 
 		textFieldTelefono = new JTextField();
 		panelFormulario.add(textFieldTelefono);
-		textFieldTelefono.setColumns(10);
 
 		JLabel lblCita = new JLabel("Fecha de la cita:");
 		lblCita.setFont(new Font("Tahoma", Font.BOLD, 10));
@@ -91,7 +88,7 @@ public class VentanaCitaMedicaJFrame extends JFrame {
 		// JDateChooser (ya incluye un textField + icono de calendario)
 		JDateChooser elegirFecha = new JDateChooser();
 		elegirFecha.setDateFormatString("dd/MM/yyyy");
-		panelFecha.add(elegirFecha, BorderLayout.SOUTH);
+		panelFecha.add(elegirFecha);
 
 		// Añadimos el subpanel a la celda derecha de la fila
 		panelFormulario.add(panelFecha);
