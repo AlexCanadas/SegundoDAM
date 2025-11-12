@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +13,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import bdd.ConexionBD;
@@ -28,6 +28,8 @@ public class VentanaProfesor extends JFrame {
 	public VentanaProfesor(int idProfesor) {
 		this.idProfesor = idProfesor;
 
+		setIconImage(Toolkit.getDefaultToolkit()
+				.getImage(VentanaInicio.class.getResource("/imagenes/UE ICONO PEQUEÑO.jpg")));
 		setTitle("Profesor - Asignar notas");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 500, 400);
@@ -36,7 +38,6 @@ public class VentanaProfesor extends JFrame {
 		setContentPane(contentPane);
 
 		JLabel lblTitulo = new JLabel("Selecciona un módulo:");
-		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblTitulo, BorderLayout.NORTH);
 
 		comboBoxModulos = new JComboBox<>();
@@ -61,20 +62,20 @@ public class VentanaProfesor extends JFrame {
 		panelBotones.add(btnGuardar);
 		contentPane.add(panelBotones, BorderLayout.SOUTH);
 
-		// Acción Volver
+		// Accion Volver
 		btnVolver.addActionListener(e -> {
 			VentanaInicio vi = new VentanaInicio();
 			vi.setVisible(true);
 			dispose();
 		});
 
-		// Acción Guardar notas
+		// Accion Guardar notas
 		btnGuardar.addActionListener(e -> guardarNotas());
 
-		// Cargar módulos del profesor
+		// Cargar modulos del profesor
 		cargarModulos();
 
-		// Al cambiar de módulo, cargar alumnos
+		// Al cambiar de modulo, cargar alumnos
 		comboBoxModulos.addActionListener(e -> {
 			if (comboBoxModulos.getSelectedIndex() != -1) {
 				cargarAlumnos();

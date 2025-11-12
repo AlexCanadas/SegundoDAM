@@ -79,85 +79,11 @@ public class VentanaInicio extends JFrame {
 		textFieldUsuario = new JTextField();
 		textFieldUsuario.setBounds(153, 37, 132, 22);
 		contentPane.add(textFieldUsuario);
-		textFieldUsuario.setColumns(10);
 
 		passwordField = new JPasswordField();
 		passwordField.setEchoChar('*');
 		passwordField.setBounds(156, 104, 129, 22);
 		contentPane.add(passwordField);
-
-		btnLimpiar = new JButton("LIMPIAR");
-		btnLimpiar.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnLimpiar.setBounds(168, 213, 94, 25);
-		contentPane.add(btnLimpiar);
-
-		// Evento para el botón "Limpiar"
-		btnLimpiar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				textFieldUsuario.setText("");
-				passwordField.setText("");
-			}
-		});
-
-		btnSalir = new JButton("SALIR");
-		btnSalir.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnSalir.setBounds(444, 213, 88, 25);
-		contentPane.add(btnSalir);
-
-		// Evento para el botón "Salir"
-		btnSalir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit(EXIT_ON_CLOSE);
-			}
-		});
-
-		btEntrar = new JButton("ENTRAR");
-		btEntrar.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btEntrar.setBounds(346, 213, 88, 25);
-		contentPane.add(btEntrar);
-
-		// Evento para el botón "Entrar"
-		btEntrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String usuario = textFieldUsuario.getText();
-				String contraseña = new String(passwordField.getPassword());
-				String cargo = comboBoxListaDesplegable.getSelectedItem().toString();
-
-				if (cargo.equals("Seleccione cargo")) {
-					JOptionPane.showMessageDialog(null, "Debe seleccionar un cargo.");
-					return;
-				}
-
-				// Conectar a la base de datos
-				try (Connection conexion = ConexionBD.conectar()) {
-					String sql = "SELECT * FROM usuarios WHERE nombre_usuario = ? AND password = ? AND cargo = ?";
-					java.sql.PreparedStatement ps = conexion.prepareStatement(sql);
-					ps.setString(1, usuario);
-					ps.setString(2, contraseña);
-					ps.setString(3, cargo);
-
-					java.sql.ResultSet rs = ps.executeQuery();
-
-					if (rs.next()) {
-						int idUsuario = rs.getInt("id"); // ID del usuario en la base
-						if (cargo.equals("Estudiante")) {
-							VentanaAlumno va = new VentanaAlumno(idUsuario);
-							va.setVisible(true);
-						} else if (cargo.equals("Profesor")) {
-							VentanaProfesor vp = new VentanaProfesor(idUsuario);
-							vp.setVisible(true);
-						}
-						dispose(); // Cierra la ventana de inicio
-					} else {
-						JOptionPane.showMessageDialog(null, "❌ Usuario, contraseña o cargo incorrectos.");
-					}
-
-				} catch (Exception ex) {
-					ex.printStackTrace();
-					JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos.");
-				}
-			}
-		});
 
 		// Desplegable para seleccionar el rol de Estudiante o Profesor
 		comboBoxListaDesplegable = new JComboBox<>();
@@ -171,6 +97,84 @@ public class VentanaInicio extends JFrame {
 		LogoUE.setIcon(new ImageIcon(VentanaInicio.class.getResource("/imagenes/descarga.png")));
 		LogoUE.setBounds(306, 59, 300, 95);
 		contentPane.add(LogoUE);
+
+		btnLimpiar = new JButton("LIMPIAR");
+		btnLimpiar.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnLimpiar.setBounds(168, 213, 94, 25);
+		contentPane.add(btnLimpiar);
+
+		// Evento para el boton "Limpiar"
+		btnLimpiar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textFieldUsuario.setText("");
+				passwordField.setText("");
+				comboBoxListaDesplegable.setSelectedIndex(0); // Vuelve a "Seleccione cargo"
+
+			}
+		});
+
+		btnSalir = new JButton("SALIR");
+		btnSalir.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnSalir.setBounds(444, 213, 88, 25);
+		contentPane.add(btnSalir);
+
+		// Evento para el boton "Salir"
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(EXIT_ON_CLOSE);
+			}
+		});
+
+		btEntrar = new JButton("ENTRAR");
+		btEntrar.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btEntrar.setBounds(346, 213, 88, 25);
+		contentPane.add(btEntrar);
+
+		// Evento para el boton "Entrar"
+		btEntrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String usuario = textFieldUsuario.getText();
+				String contraseña = new String(passwordField.getPassword());
+				String cargo = comboBoxListaDesplegable.getSelectedItem().toString();
+
+				if (cargo.equals("Seleccione cargo")) {
+					JOptionPane.showMessageDialog(null, "Debe seleccionar un cargo.");
+					return;
+				}
+
+				// Conectamos a la base de datos
+				try (Connection conexion = ConexionBD.conectar()) {
+					String sql = "SELECT * FROM usuarios WHERE nombre_usuario = ? AND password = ? AND cargo = ?";
+					java.sql.PreparedStatement ps = conexion.prepareStatement(sql);
+					ps.setString(1, usuario);
+					ps.setString(2, contraseña);
+					ps.setString(3, cargo);
+
+					// Se ejecuta la query revisando si existe ese usuario en la bdd
+					java.sql.ResultSet rs = ps.executeQuery();
+
+					// Vamos a la ventana secundaria correspondiente dependiendo del cargo
+					if (rs.next()) {
+						int idUsuario = rs.getInt("id"); // id del usuario en la base
+						if (cargo.equals("Estudiante")) {
+							VentanaAlumno va = new VentanaAlumno(idUsuario);
+							va.setVisible(true);
+						} else if (cargo.equals("Profesor")) {
+							VentanaProfesor vp = new VentanaProfesor(idUsuario);
+							vp.setVisible(true);
+						}
+						dispose(); // Cierra la ventana de inicio
+					} else {
+						JOptionPane.showMessageDialog(null, "Usuario, contraseña o cargo incorrectos.");
+					}
+
+				} catch (Exception ex) {
+					ex.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos.");
+				}
+			}
+		});
+
 	}
 
 }

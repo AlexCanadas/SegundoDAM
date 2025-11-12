@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 public class ConexionBD {
 	private static final String URL = "jdbc:mysql://localhost:3306/InterfacesPrimeraEvaluable";
-	private static final String USER = "root"; // tu usuario de MySQL
-	private static final String PASSWORD = ""; // tu contraseña de MySQL
+	private static final String USER = "root";
+	private static final String PASSWORD = "";
 
 	public static Connection conectar() {
 		Connection conexion = null;

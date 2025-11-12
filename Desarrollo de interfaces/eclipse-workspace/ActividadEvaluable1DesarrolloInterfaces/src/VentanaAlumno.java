@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,6 +27,8 @@ public class VentanaAlumno extends JFrame {
 	public VentanaAlumno(int idAlumno) {
 		this.idAlumno = idAlumno;
 
+		setIconImage(Toolkit.getDefaultToolkit()
+				.getImage(VentanaInicio.class.getResource("/imagenes/UE ICONO PEQUEÑO.jpg")));
 		setTitle("Alumno - Mis módulos");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 400, 300);
