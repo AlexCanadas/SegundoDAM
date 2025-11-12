@@ -3,6 +3,7 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -16,14 +17,14 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import bdd.ConexionBD;
+
 public class VentanaInicio extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textFieldUsuario;
 	private JPasswordField passwordField;
-	private String nombreUsuario = "alejandro";
-	private String password = "uem";
 	private JButton btnLimpiar;
 	private JButton btnSalir;
 	private JButton btEntrar;
@@ -124,14 +125,36 @@ public class VentanaInicio extends JFrame {
 
 				if (cargo.equals("Seleccione cargo")) {
 					JOptionPane.showMessageDialog(null, "Debe seleccionar un cargo.");
-				} else if (usuario.equalsIgnoreCase(nombreUsuario) && contraseña.equalsIgnoreCase(password)) {
-					if (cargo.equals("Estudiante")) {
-						JOptionPane.showMessageDialog(null, "Bienvenid@, " + usuario + ". Cargo: Estudiante.");
-					} else if (cargo.equals("Profesor")) {
-						JOptionPane.showMessageDialog(null, "Bienvenid@, " + usuario + ". Cargo: Profesor.");
+					return;
+				}
+
+				// Conectar a la base de datos
+				try (Connection conexion = ConexionBD.conectar()) {
+					String sql = "SELECT * FROM usuarios WHERE nombre_usuario = ? AND password = ? AND cargo = ?";
+					java.sql.PreparedStatement ps = conexion.prepareStatement(sql);
+					ps.setString(1, usuario);
+					ps.setString(2, contraseña);
+					ps.setString(3, cargo);
+
+					java.sql.ResultSet rs = ps.executeQuery();
+
+					if (rs.next()) {
+						int idUsuario = rs.getInt("id"); // ID del usuario en la base
+						if (cargo.equals("Estudiante")) {
+							VentanaAlumno va = new VentanaAlumno(idUsuario);
+							va.setVisible(true);
+						} else if (cargo.equals("Profesor")) {
+							VentanaProfesor vp = new VentanaProfesor(idUsuario);
+							vp.setVisible(true);
+						}
+						dispose(); // Cierra la ventana de inicio
+					} else {
+						JOptionPane.showMessageDialog(null, "❌ Usuario, contraseña o cargo incorrectos.");
 					}
-				} else {
-					JOptionPane.showMessageDialog(null, "Datos incorrectos");
+
+				} catch (Exception ex) {
+					ex.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos.");
 				}
 			}
 		});
