@@ -4,7 +4,7 @@ import java.util.concurrent.Semaphore;
 public class NumPares extends Thread {
 	private String nombreHilo;
 	private int tiempo;
-	private static int sumaTotal = 0; // Variable estática para la suma total
+	private static int sumaTotal = 0; // Creamos variable estática para la suma total
 	private static Semaphore semaforo = new Semaphore(1); // Solo dejamos un hilo
 
 	public NumPares(String nombreHilo, int tiempo) {
@@ -25,7 +25,7 @@ public class NumPares extends Thread {
 			System.out.println("Suma de números pares en " + nombreHilo + ": " + suma);
 
 			// Creamos semáforo para que solo un hilo pueda modificar la variable sumaTotal
-			// a la vez
+			// en un determinado momento
 			semaforo.acquire(); // Pedir permiso del semáforo
 			try {
 				sumaTotal += suma;
@@ -42,7 +42,7 @@ public class NumPares extends Thread {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Introduce el tiempo de pausa para los hilos de números pares (en milisegundos): ");
+		System.out.print("Introduce el tiempo que quieres que se pausen los hilos de números pares (en ms): ");
 		int tiempo = sc.nextInt();
 
 		System.out.println("Ejecutando hilos de números pares:");

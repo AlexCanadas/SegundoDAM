@@ -25,7 +25,7 @@ public class NumImpares extends Thread {
 			System.out.println("Suma de números impares en " + nombreHilo + ": " + suma);
 
 			// Creamos semáforo para que solo un hilo pueda modificar la variable sumaTotal
-			// a la vez
+			// en un determinado momento
 			semaforo.acquire(); // Pedir permiso del semáforo
 			try {
 				sumaTotal += suma;
@@ -42,7 +42,7 @@ public class NumImpares extends Thread {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Introduce el tiempo de pausa para los hilos de números impares (en milisegundos): ");
+		System.out.print("Introduce el tiempo que quieres que se pausen los hilos de números impares (en ms): ");
 		int tiempo = sc.nextInt();
 
 		System.out.println("Ejecutando hilos de números impares:");
