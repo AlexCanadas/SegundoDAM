@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.List;
 
-public class Metodos {
+public class NorthwindController {
 
     public void insertarEmpleados(Connection connection) throws SQLException {
         // Consulta SQL parametrizada

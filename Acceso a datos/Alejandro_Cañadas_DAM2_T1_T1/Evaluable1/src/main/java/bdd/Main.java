@@ -8,7 +8,7 @@ public class Main {
         DBConnection dbConnection = new DBConnection(); // Crear instancia
         Connection connection = dbConnection.getConnection(); // Obtener conexión
 
-        Metodos metodos = new Metodos();
+        NorthwindController metodos = new NorthwindController();
         //metodos.insertarEmpleados(connection);
 
 
