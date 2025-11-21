@@ -1,4 +1,4 @@
 
-public class HilosHerencia {
-	
+public class HilosHerencia extends Thread {
+
 }
