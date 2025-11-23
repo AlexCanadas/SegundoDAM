@@ -52,7 +52,7 @@ public class HilosInterfaz implements Runnable {
 		}
 		System.out.println("YA!!!");
 
-		// Crear y lanzar cada hilo
+		// crear y lanzar cada hilo
 		for (int i = 1; i <= numeroGalgos; i++) {
 			Thread t = new Thread(new HilosInterfaz("Galgo " + i, tiempo));
 			t.start();
