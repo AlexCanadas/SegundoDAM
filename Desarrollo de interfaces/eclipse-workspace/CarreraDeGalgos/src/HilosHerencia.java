@@ -17,7 +17,8 @@ public class HilosHerencia extends Thread {
 			System.out.println(nombreGalgo + " empieza a correr...");
 			Thread.sleep(tiempo * 1000); // simula la carrera pasandolo a ms
 
-			// usamos synchronized para actualizar la posicion de llegada
+			// usamos synchronized para actualizar la posicion de llegada e
+			// HilosInterfaz.class como candado unico de la clase
 			synchronized (HilosHerencia.class) {
 				System.out.println(nombreGalgo + " ha llegado en posición: " + numLlegada);
 				numLlegada++;
