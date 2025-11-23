@@ -17,7 +17,8 @@ public class HilosInterfaz implements Runnable {
 			System.out.println(nombreGalgo + " empieza a correr...");
 			Thread.sleep(tiempo * 1000); // simula la carrera pasandolo a ms
 
-			// usamos synchronized para actualizar la posicion de llegada
+			// usamos synchronized para actualizar la posicion de llegada e
+			// HilosInterfaz.class como candado unico de la clase
 			synchronized (HilosInterfaz.class) {
 				System.out.println(nombreGalgo + " ha llegado en posición: " + numLlegada);
 				numLlegada++;
@@ -54,8 +55,8 @@ public class HilosInterfaz implements Runnable {
 
 		// crear y lanzar cada hilo
 		for (int i = 1; i <= numeroGalgos; i++) {
-			Thread t = new Thread(new HilosInterfaz("Galgo " + i, tiempo));
-			t.start();
+			Thread galgo = new Thread(new HilosInterfaz("Galgo " + i, tiempo));
+			galgo.start();
 		}
 	}
 }
