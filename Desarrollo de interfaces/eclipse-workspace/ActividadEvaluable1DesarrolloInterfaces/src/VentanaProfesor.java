@@ -1,9 +1,5 @@
 import java.awt.BorderLayout;
 import java.awt.Toolkit;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -15,7 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import bdd.ConexionBD;
+import bdd.GestionBD;
 
 public class VentanaProfesor extends JFrame {
 
@@ -71,10 +67,8 @@ public class VentanaProfesor extends JFrame {
 
 		// Accion Guardar notas
 		btnGuardar.addActionListener(e -> guardarNotas());
-
 		// Cargar modulos del profesor
 		cargarModulos();
-
 		// Al cambiar de modulo, cargar alumnos
 		comboBoxModulos.addActionListener(e -> {
 			if (comboBoxModulos.getSelectedIndex() != -1) {
@@ -84,47 +78,45 @@ public class VentanaProfesor extends JFrame {
 	}
 
 	private void cargarModulos() {
-		try (Connection conn = ConexionBD.conectar()) {
-			String sql = "SELECT m.id, m.nombre_modulo FROM modulos m "
-					+ "JOIN profesor_modulo pm ON m.id = pm.id_modulo " + "WHERE pm.id_profesor = ?";
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, idProfesor);
-			ResultSet rs = ps.executeQuery();
+		try {
+			var rs = GestionBD.obtenerModulosProfesor(idProfesor);
 
 			comboBoxModulos.removeAllItems();
 			while (rs.next()) {
 				comboBoxModulos.addItem(rs.getInt("id") + " - " + rs.getString("nombre_modulo"));
 			}
-		} catch (SQLException e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(this, "Error al cargar módulos");
 		}
+
 	}
 
 	private void cargarAlumnos() {
 		if (comboBoxModulos.getSelectedItem() == null)
 			return;
 
-		String item = comboBoxModulos.getSelectedItem().toString();
-		int idModulo = Integer.parseInt(item.split(" - ")[0]);
+		String item = comboBoxModulos.getSelectedItem().toString(); // obtiene el texto del módulo seleccionado
+		int idModulo = Integer.parseInt(item.split(" - ")[0]); // separa y se queda con el id solamente para la bdd
 
-		tableModel.setRowCount(0); // limpiar tabla
+		tableModel.setRowCount(0); // limpiar tabla antes de mostrar nuevos
 
-		try (Connection conn = ConexionBD.conectar()) {
-			String sql = "SELECT u.id, u.nombre_usuario, am.nota " + "FROM alumno_modulo am "
-					+ "JOIN usuarios u ON am.id_alumno = u.id " + "WHERE am.id_modulo = ?";
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, idModulo);
-			ResultSet rs = ps.executeQuery();
+		try {
+			var rs = GestionBD.obtenerAlumnosModulo(idModulo);
+
+			tableModel.setRowCount(0); // se limpia de nuevo la tabla por si acaso
 
 			while (rs.next()) {
 				tableModel
 						.addRow(new Object[] { rs.getInt("id"), rs.getString("nombre_usuario"), rs.getDouble("nota") });
 			}
-		} catch (SQLException e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(this, "Error al cargar alumnos");
 		}
+
 	}
 
 	private void guardarNotas() {
@@ -133,25 +125,20 @@ public class VentanaProfesor extends JFrame {
 		String item = comboBoxModulos.getSelectedItem().toString();
 		int idModulo = Integer.parseInt(item.split(" - ")[0]);
 
-		try (Connection conn = ConexionBD.conectar()) {
-			String sql = "UPDATE alumno_modulo SET nota = ? WHERE id_alumno = ? AND id_modulo = ?";
-			PreparedStatement ps = conn.prepareStatement(sql);
-
+		try {
 			for (int i = 0; i < tableModel.getRowCount(); i++) {
-				double nota = Double.parseDouble(tableModel.getValueAt(i, 2).toString());
 				int idAlumno = (int) tableModel.getValueAt(i, 0);
+				double nota = Double.parseDouble(tableModel.getValueAt(i, 2).toString());
 
-				ps.setDouble(1, nota);
-				ps.setInt(2, idAlumno);
-				ps.setInt(3, idModulo);
-				ps.executeUpdate();
+				GestionBD.guardarNota(idAlumno, idModulo, nota);
 			}
 
 			JOptionPane.showMessageDialog(this, "Notas guardadas correctamente!");
 
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(this, "Error al guardar las notas");
 		}
+
 	}
 }

@@ -1,9 +1,5 @@
 import java.awt.BorderLayout;
 import java.awt.Toolkit;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -16,7 +12,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 
-import bdd.ConexionBD;
+import bdd.GestionBD;
 
 public class VentanaAlumno extends JFrame {
 
@@ -75,22 +71,21 @@ public class VentanaAlumno extends JFrame {
 
 	private void cargarModulos() {
 		DefaultListModel<String> modelo = new DefaultListModel<>();
-		try (Connection conn = ConexionBD.conectar()) {
-			String sql = "SELECT m.nombre_modulo, am.nota FROM modulos m "
-					+ "JOIN alumno_modulo am ON m.id = am.id_modulo " + "WHERE am.id_alumno = ?";
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, idAlumno);
-			ResultSet rs = ps.executeQuery();
+
+		try {
+			var rs = GestionBD.obtenerModulosAlumno(idAlumno);
 
 			while (rs.next()) {
 				String item = rs.getString("nombre_modulo") + " - Nota: " + rs.getDouble("nota");
 				modelo.addElement(item);
 			}
+
 			listModulos.setModel(modelo);
 
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(this, "Error al cargar módulos");
 		}
 	}
+
 }

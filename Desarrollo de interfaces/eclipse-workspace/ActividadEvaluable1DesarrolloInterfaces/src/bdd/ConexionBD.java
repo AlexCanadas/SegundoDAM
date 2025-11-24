@@ -13,9 +13,9 @@ public class ConexionBD {
 		Connection conexion = null;
 		try {
 			conexion = DriverManager.getConnection(URL, USER, PASSWORD);
-			System.out.println("✅ Conexión exitosa a la base de datos");
+			System.out.println(":) Conectado a la base de datos :)");
 		} catch (SQLException e) {
-			System.out.println("❌ Error al conectar a la base de datos, revisa user y password de mysql");
+			System.out.println(":( Ha habido algún al conectar a la base de datos, revisa user y password de mysql :(");
 			e.printStackTrace();
 		}
 		return conexion;

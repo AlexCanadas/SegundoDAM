@@ -3,7 +3,6 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -17,7 +16,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import bdd.ConexionBD;
+import bdd.GestionBD;
 
 public class VentanaInicio extends JFrame {
 
@@ -108,8 +107,7 @@ public class VentanaInicio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				textFieldUsuario.setText("");
 				passwordField.setText("");
-				comboBoxListaDesplegable.setSelectedIndex(0); // Vuelve a "Seleccione cargo"
-
+				comboBoxListaDesplegable.setSelectedIndex(0); // Limpia dejando de nuevo "Seleccione cargo"
 			}
 		});
 
@@ -143,35 +141,26 @@ public class VentanaInicio extends JFrame {
 				}
 
 				// Conectamos a la base de datos
-				try (Connection conexion = ConexionBD.conectar()) {
-					String sql = "SELECT * FROM usuarios WHERE nombre_usuario = ? AND password = ? AND cargo = ?";
-					java.sql.PreparedStatement ps = conexion.prepareStatement(sql);
-					ps.setString(1, usuario);
-					ps.setString(2, contraseña);
-					ps.setString(3, cargo);
+				try {
+					var rs = GestionBD.validarUsuario(usuario, contraseña, cargo);
 
-					// Se ejecuta la query revisando si existe ese usuario en la bdd
-					java.sql.ResultSet rs = ps.executeQuery();
-
-					// Vamos a la ventana secundaria correspondiente dependiendo del cargo
 					if (rs.next()) {
-						int idUsuario = rs.getInt("id"); // id del usuario en la base
+						int idUsuario = rs.getInt("id");
 						if (cargo.equals("Estudiante")) {
-							VentanaAlumno va = new VentanaAlumno(idUsuario);
-							va.setVisible(true);
-						} else if (cargo.equals("Profesor")) {
-							VentanaProfesor vp = new VentanaProfesor(idUsuario);
-							vp.setVisible(true);
+							new VentanaAlumno(idUsuario).setVisible(true);
+						} else {
+							new VentanaProfesor(idUsuario).setVisible(true);
 						}
-						dispose(); // Cierra la ventana de inicio
+						dispose();
 					} else {
 						JOptionPane.showMessageDialog(null, "Usuario, contraseña o cargo incorrectos.");
 					}
 
-				} catch (Exception ex) {
-					ex.printStackTrace();
+				} catch (Exception bdd) {
+					bdd.printStackTrace();
 					JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos.");
 				}
+
 			}
 		});
 
