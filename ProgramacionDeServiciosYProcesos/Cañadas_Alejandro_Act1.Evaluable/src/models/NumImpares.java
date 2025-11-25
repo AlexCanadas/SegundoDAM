@@ -1,4 +1,5 @@
-import java.util.Scanner;
+package models;
+
 import java.util.concurrent.Semaphore;
 
 public class NumImpares extends Thread {
@@ -40,31 +41,8 @@ public class NumImpares extends Thread {
 		}
 	}
 
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		System.out.print("Introduce el tiempo que quieres que se pausen los hilos de números impares (en ms): ");
-		int tiempo = sc.nextInt();
-
-		System.out.println("Ejecutando hilos de números impares:");
-
-		// Crear y lanzar dos hilos de números impares con el tiempo de pausa
-		// especificado
-		NumImpares hilo1Impar = new NumImpares("Hilo 1 impar", tiempo);
-		NumImpares hilo2Impar = new NumImpares("Hilo 2 impar", tiempo);
-
-		hilo1Impar.start();
-		hilo2Impar.start();
-
-		try {
-			// Esperar a que ambos hilos terminen
-			hilo1Impar.join();
-			hilo2Impar.join();
-
-			// Mostrar la suma total después de que los hilos hayan terminado
-			System.out.println("Suma total de números impares: " + sumaTotal);
-
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+	public static int getSumaTotal() {
+		return sumaTotal;
 	}
+
 }
