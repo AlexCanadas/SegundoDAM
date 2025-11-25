@@ -1,5 +1,7 @@
 package bdd;
 
+import models.Productos;
+
 import java.io.IOException;
 import java.sql.*;
 import java.util.List;
@@ -15,25 +17,25 @@ public class NorthwindController {
 
             // Insertar primer empleado
             statement.setInt(1, 1);  // Asignamos el ID
-            statement.setString(2, "Verona"); // Asignamos el nombre
-            statement.setString(3, "Florio"); // Asignamos los apellidos
-            statement.setString(4, "veronaflorio@hotmail.com"); // Asignamos el correo
+            statement.setString(2, "Alejandro"); // Asignamos el nombre
+            statement.setString(3, "Canadas"); // Asignamos los apellidos
+            statement.setString(4, "AleCana@hotmail.com"); // Asignamos el correo
             statement.executeUpdate(); // Ejecutar la inserción
             System.out.println("Empleado 1 insertado con éxito.");
 
             // Insertar segundo empleado
             statement.setInt(1, 2);
-            statement.setString(2, "María");
-            statement.setString(3, "Cordovez");
-            statement.setString(4, "mariacordovez@hotmail.com");
+            statement.setString(2, "Africa");
+            statement.setString(3, "Vara");
+            statement.setString(4, "AfriVara@hotmail.com");
             statement.executeUpdate();
             System.out.println("Empleado 2 insertado con éxito.");
 
             // Insertar tercer empleado
             statement.setInt(1, 3);
-            statement.setString(2, "Biaggio");
-            statement.setString(3, "Florio");
-            statement.setString(4, "floriobiaggio@hotmail.com");
+            statement.setString(2, "Rodrigo");
+            statement.setString(3, "Fernandez");
+            statement.setString(4, "RodriFndez@hotmail.com");
             statement.executeUpdate();
             System.out.println("Empleado 3 insertado con éxito.");
 
@@ -73,10 +75,11 @@ public class NorthwindController {
 
             // Iterar sobre los productos y agregar al lote de inserciones
             for (Productos product : products) {
-                statement.setString(1, product.getTitulo());
-                statement.setString(2, product.getDescripcion());
-                statement.setInt(3, product.getCantidad());
-                statement.setDouble(4, product.getPrecio());
+                statement.setString(1, product.getTitle());
+                statement.setString(2, product.getDescription());
+                statement.setInt(3, product.getStock());
+                statement.setDouble(4, product.getPrice());
+
                 statement.addBatch(); // Agregar al lote
             }
 
@@ -113,12 +116,12 @@ public class NorthwindController {
     }
 
     public void mostrarProductosPorPrecio(Connection connection) {
-        String sql = "SELECT * FROM Productos WHERE precio < 600"; // Consulta para obtener productos con precio inferior a 600€
+        String sql = "SELECT * FROM Productos WHERE precio < 500"; // Consulta para obtener productos con precio inferior a 600€
 
         try (Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(sql);
 
-            System.out.println("Productos con precio inferior a 600€:");
+            System.out.println("Productos con precio inferior a 500€:");
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String nombre = resultSet.getString("nombre");
