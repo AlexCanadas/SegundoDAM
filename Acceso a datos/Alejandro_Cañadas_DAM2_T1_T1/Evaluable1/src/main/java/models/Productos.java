@@ -8,15 +8,8 @@ public class Productos {
     private int stock;
     private double price;
 
-    public Productos() {} // Necesario para Gson
-
-    public Productos(int id, String title, String description, int stock, double price) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.stock = stock;
-        this.price = price;
-    }
+    // Solo constructor vacio porque GSON no usa constructor con parámetros
+    public Productos() {}
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }

@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ced45fbd-9d48-494e-8f54-f4467f30eab6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Evaluable1/src/main/java/models/Productos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluable1/src/main/java/bdd/Empleados.java" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluable1/src/main/java/models/Empleados.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Evaluable1/src/main/java/bdd/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluable1/src/main/java/bdd/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluable1/src/main/java/bdd/NorthwindController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluable1/src/main/java/bdd/NorthwindController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Evaluable1/src/main/java/bdd/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluable1/src/main/java/bdd/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluable1/src/main/java/bdd/Productos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluable1/src/main/java/models/Productos.java" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluable1/src/main/java/models/Productos.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

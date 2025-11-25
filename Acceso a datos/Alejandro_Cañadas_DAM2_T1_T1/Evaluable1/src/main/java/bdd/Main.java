@@ -19,7 +19,7 @@ public class Main {
 
         // metodos.mostrarProductos(connection);
 
-         metodos.agregarPedidos(connection);
+        // metodos.agregarPedidos(connection);
 
         // metodos.insertarProductosFav(connection);
     }
