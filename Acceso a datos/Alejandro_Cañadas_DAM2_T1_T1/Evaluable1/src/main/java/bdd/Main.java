@@ -17,10 +17,10 @@ public class Main {
         // Insertar productos desde la API:
         // metodos.agregarProductos(connection);
 
-        // metodos.mostrarProductos(connection);
+        metodos.mostrarProductos(connection);
 
-        // metodos.agregarPedidos(connection);
+        //metodos.agregarPedidos(connection);
 
-        // metodos.insertarProductosFav(connection);
+        //metodos.insertarProductosFav(connection);
     }
 }

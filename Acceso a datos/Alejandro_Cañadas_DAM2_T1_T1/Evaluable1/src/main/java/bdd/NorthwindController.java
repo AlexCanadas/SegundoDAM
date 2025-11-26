@@ -16,28 +16,28 @@ public class NorthwindController {
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
 
             // Insertar primer empleado
-            statement.setInt(1, 1);  // Asignamos el ID
-            statement.setString(2, "Alejandro"); // Asignamos el nombre
-            statement.setString(3, "Canadas"); // Asignamos los apellidos
-            statement.setString(4, "AleCana@hotmail.com"); // Asignamos el correo
+            statement.setInt(1, 5);  // Asignamos el ID
+            statement.setString(2, "Pablo"); // Asignamos el nombre
+            statement.setString(3, "Romeral"); // Asignamos los apellidos
+            statement.setString(4, "PabloRo@hotmail.com"); // Asignamos el correo
             statement.executeUpdate(); // Ejecutar la inserción
             System.out.println("Empleado 1 insertado con éxito.");
 
-            // Insertar segundo empleado
-            statement.setInt(1, 2);
-            statement.setString(2, "Africa");
-            statement.setString(3, "Vara");
-            statement.setString(4, "AfriVara@hotmail.com");
-            statement.executeUpdate();
-            System.out.println("Empleado 2 insertado con éxito.");
-
-            // Insertar tercer empleado
-            statement.setInt(1, 3);
-            statement.setString(2, "Rodrigo");
-            statement.setString(3, "Fernandez");
-            statement.setString(4, "RodriFndez@hotmail.com");
-            statement.executeUpdate();
-            System.out.println("Empleado 3 insertado con éxito.");
+//            // Insertar segundo empleado
+//            statement.setInt(1, 2);
+//            statement.setString(2, "Africa");
+//            statement.setString(3, "Vara");
+//            statement.setString(4, "AfriVara@hotmail.com");
+//            statement.executeUpdate();
+//            System.out.println("Empleado 2 insertado con éxito.");
+//
+//            // Insertar tercer empleado
+//            statement.setInt(1, 3);
+//            statement.setString(2, "Rodrigo");
+//            statement.setString(3, "Fernandez");
+//            statement.setString(4, "RodriFndez@hotmail.com");
+//            statement.executeUpdate();
+//            System.out.println("Empleado 3 insertado con éxito.");
 
         } catch (SQLException e) {
             System.out.println("Error al insertar empleados: " + e.getMessage());
