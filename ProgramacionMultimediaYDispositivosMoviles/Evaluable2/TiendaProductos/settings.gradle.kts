@@ -16,9 +16,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+
     }
 }
 
-rootProject.name = "Evaluable2"
+rootProject.name = "TiendaEvaluable2"
 include(":app")
  

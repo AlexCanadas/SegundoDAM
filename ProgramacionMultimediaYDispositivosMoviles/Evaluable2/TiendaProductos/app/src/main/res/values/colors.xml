@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <!-- Colores nuevos para un estilo más vistoso -->
+    <color name="vibrantBackground">#FFECB3</color>  <!-- Un ámbar claro para el fondo -->
+    <color name="vibrantToolbar">#FF9800</color>       <!-- Naranja intenso para la Toolbar -->
+    <color name="vibrantToolbarText">#FFFFFF</color>     <!-- Texto blanco en la Toolbar -->
+    <color name="vibrantText">#D32F2F</color>
+    <color name="backgroundColor">#FFF8E1</color><!-- Rojo intenso para textos destacados -->
+</resources>
