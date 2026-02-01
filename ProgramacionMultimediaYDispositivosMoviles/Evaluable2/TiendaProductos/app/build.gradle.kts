@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId = "com.example.tiendaevaluable2"
         minSdk = 25
-        targetSdk = 35  // Actualizado a 35 para cumplir con las dependencias
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -52,7 +52,7 @@ dependencies {
     // Dependencia de Activity (necesaria para algunas APIs de AndroidX)
     implementation(libs.androidx.activity.v1100)
 
-    // Dependencia de Analytics (según tu configuración de libs)
+    // Dependencia de Analytics
     implementation(libs.play.services.analytics.impl)
     implementation(libs.androidx.material3.android)
 
