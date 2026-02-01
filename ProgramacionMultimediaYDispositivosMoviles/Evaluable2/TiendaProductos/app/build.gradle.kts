@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.tiendaevaluable2"
+    namespace = "com.example.tiendaproductos"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.tiendaevaluable2"
+        applicationId = "com.example.tiendaproductos"
         minSdk = 25
         targetSdk = 35
         versionCode = 1
