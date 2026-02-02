@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-parcelize") // sin uso pero lo dejamos por si acaso
 }
 
 android {
@@ -35,6 +36,10 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    viewBinding {
+        enable = true
+    }
+
 }
 
 dependencies {
@@ -46,4 +51,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // RecyclerView
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    // Volley para HTTP
+    implementation("com.android.volley:volley:1.2.1")
+    // Picasso
+    implementation("com.squareup.picasso:picasso:2.8")
+
 }
