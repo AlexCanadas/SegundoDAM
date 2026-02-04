@@ -1,4 +1,4 @@
-package com.example.tiendaproductos
+package com.example.tiendaproductos.ui
 
 import android.os.Build
 import android.os.Bundle
@@ -10,6 +10,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tiendaproductos.R
+import com.example.tiendaproductos.adapter.ProductAdapter
+import com.example.tiendaproductos.model.Product
 import com.google.android.material.snackbar.Snackbar
 
 class SecondActivity : AppCompatActivity() {

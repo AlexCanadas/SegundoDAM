@@ -1,4 +1,4 @@
-package com.example.tiendaproductos
+package com.example.tiendaproductos.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -21,6 +21,8 @@ import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.tiendaproductos.R
+import com.example.tiendaproductos.adapter.ProductAdapter
+import com.example.tiendaproductos.model.Product
 
 class MainActivity : AppCompatActivity() {
 
@@ -101,7 +103,11 @@ class MainActivity : AppCompatActivity() {
                         }
                         recyclerProductos.adapter = ProductAdapter(filteredProducts, { product ->
                             carrito.add(product)
-                            Toast.makeText(this@MainActivity, "${product.title} añadido al carrito", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this@MainActivity,
+                                "${product.title} añadido al carrito",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }, true)
                     }
                     override fun onNothingSelected(parent: AdapterView<*>) { }
@@ -135,7 +141,8 @@ class MainActivity : AppCompatActivity() {
                 // Inicialmente se muestran todos los productos
                 recyclerProductos.adapter = ProductAdapter(productList, { product ->
                     carrito.add(product)
-                    Toast.makeText(this, "${product.title} añadido al carrito", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "${product.title} añadido al carrito", Toast.LENGTH_SHORT)
+                        .show()
                 }, true)
             },
             { error -> Log.e("Volley", "Error: ${error.message}") }

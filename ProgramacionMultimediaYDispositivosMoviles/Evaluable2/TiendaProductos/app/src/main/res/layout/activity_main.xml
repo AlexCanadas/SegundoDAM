@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <!-- AppBar con Toolbar fija y estilo vibrante -->
     <com.google.android.material.appbar.AppBarLayout

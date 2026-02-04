@@ -1,4 +1,4 @@
-package com.example.tiendaproductos
+package com.example.tiendaproductos.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tiendaproductos.R
+import com.example.tiendaproductos.model.Product
 import com.squareup.picasso.Picasso
 
 class ProductAdapter(
