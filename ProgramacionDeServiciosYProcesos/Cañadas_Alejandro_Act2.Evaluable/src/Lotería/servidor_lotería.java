@@ -35,11 +35,11 @@ public class servidor_lotería {
 		input = new DataInputStream(socket.getInputStream());
 		output = new DataOutputStream(socket.getOutputStream());
 
-		System.out.println("Se ha establecido una conexión con el servidor.");
+		System.out.println("Se ha establecido una conexión con el cliente.");
 	}
 
 	public void stop() throws IOException {
-		System.out.println("Deteniendo conexiones realizadas con el servidor.");
+		System.out.println("Deteniendo conexiones realizadas con el cliente.");
 
 		output.close();
 		input.close();
