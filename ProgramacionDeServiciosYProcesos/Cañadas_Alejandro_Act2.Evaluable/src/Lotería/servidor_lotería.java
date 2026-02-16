@@ -18,12 +18,12 @@ public class servidor_lotería {
 	public servidor_lotería(int puerto) throws IOException {
 		serverSocket = new ServerSocket();
 		InetSocketAddress direccionRedServidor = new InetSocketAddress("localhost", puerto);
-		serverSocket.bind(direccionRedServidor);
+		serverSocket.bind(direccionRedServidor);// servidor al puerto 34282 (pasado en main)
 	}
 
 	public int generarNumeroLoteria() {
-		Random r = new Random(System.currentTimeMillis());
-		return 10000 + r.nextInt(89999);
+		Random r = new Random(System.currentTimeMillis()); // para cambiar en cada ejecución
+		return 10000 + r.nextInt(89999); // generamos un número random
 	}
 
 	public void start() throws IOException {
@@ -31,7 +31,7 @@ public class servidor_lotería {
 		System.out.println("El número de la lotería es " + numeroLoteria + ".");
 		System.out.println("El servidor de loterías y apuestas del Estado está a la espera de conexiones...");
 
-		socket = serverSocket.accept();
+		socket = serverSocket.accept(); // con accept espera a que el cliente conecte
 		input = new DataInputStream(socket.getInputStream());
 		output = new DataOutputStream(socket.getOutputStream());
 
@@ -44,7 +44,7 @@ public class servidor_lotería {
 		output.close();
 		input.close();
 		socket.close();
-		serverSocket.close();
+		serverSocket.close(); // se libera el puerto
 
 		System.out.println("Deteniendo el servidor de loterías y apuestas del Estado...");
 	}
@@ -54,9 +54,10 @@ public class servidor_lotería {
 			servidor_lotería servidor = new servidor_lotería(34282);
 			servidor.start();
 
-			System.out.println("Mensaje del cliente recibido: " + servidor.input.readInt());
+			System.out.println("Mensaje del cliente recibido: " + servidor.input.readInt()); // se lee el número escrito
+																								// por cliente
 			servidor.output.writeInt(numeroLoteria);
-			servidor.output.flush();
+			servidor.output.flush(); // forzamos que mande al momento
 			servidor.stop();
 		} catch (IOException error) {
 			error.printStackTrace();

@@ -26,6 +26,7 @@ public class cliente {
 	private JButton sendButton;
 	private JTextArea responseArea;
 
+	// constructor para conectarse
 	public cliente(String direccionIP, int puertoServidor) {
 		this.direccionIP = direccionIP;
 		this.puertoServidor = puertoServidor;
@@ -33,7 +34,7 @@ public class cliente {
 
 	private void enviarNumero() {
 		try {
-			int numero = Integer.parseInt(textField.getText());
+			int numero = Integer.parseInt(textField.getText()); // pasamos respuesta a int
 			System.out.println("Escrito: " + numero);
 			if (numero < 10000 || numero > 99999) {
 				responseArea.setText("Número inválido. Debe tener 5 dígitos.");
@@ -42,17 +43,17 @@ public class cliente {
 
 			socket = new Socket();
 			InetSocketAddress direccionServidor = new InetSocketAddress(direccionIP, puertoServidor);
-			socket.connect(direccionServidor);
+			socket.connect(direccionServidor); // conexión TCP
 			output = new DataOutputStream(socket.getOutputStream());
 			input = new DataInputStream(socket.getInputStream());
 
-			output.writeInt(numero);
-			output.flush();
+			output.writeInt(numero); // se envía número
+			output.flush(); // fuerza para que pase al momento
 			int numeroPremiado = input.readInt();
 			responseArea
 					.setText("Respuesta del servidor: " + (numeroPremiado == numero ? "¡Premiado!" : "No premiado"));
 
-			this.stop();
+			this.stop(); // cerramos todo
 		} catch (NumberFormatException ex) {
 			responseArea.setText("Por favor, ingrese un número válido.");
 		} catch (IOException ex) {
