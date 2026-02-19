@@ -25,17 +25,17 @@ public class PrincipalController {
 	@FXML
 	private Label lblMsg;
 
-	// Esto se ejecuta al cargar el FXML
+	// esto se ejecuta al cargar el FXML
 	@FXML
 	private void initialize() {
-		// Rellenamos el combo
+		// rellenamos el combo
 		cmbCargo.getItems().addAll("Alumno", "Profesor");
 		cmbCargo.getSelectionModel().selectFirst(); // selecciona "Alumno"
 	}
 
 	@FXML
 	private void onEntrar(ActionEvent e) throws IOException {
-		String cargo = cmbCargo.getValue(); // "Alumno" o "Profesor"
+		String cargo = cmbCargo.getValue(); // alumno o profesor
 		String user = txtUsuario.getText() == null ? "" : txtUsuario.getText().trim();
 		String pass = txtPass.getText() == null ? "" : txtPass.getText();
 
@@ -47,10 +47,10 @@ public class PrincipalController {
 			Session.setSession(id, user, cargo);
 
 			String fxml = cargo.equals("Profesor") ? "/VentanaProfesor.fxml" : "/VentanaAlumno.fxml";
-			Parent root = FXMLLoader.load(getClass().getResource(fxml));
+			Parent root = FXMLLoader.load(getClass().getResource(fxml)); // guardamos la pantalla a la que ir
 
 			Stage stage = (Stage) txtUsuario.getScene().getWindow();
-			stage.setScene(new Scene(root));
+			stage.setScene(new Scene(root)); // cambiamos de pantalla
 			stage.setTitle("Ventana " + cargo);
 			stage.show();
 

@@ -37,11 +37,12 @@ public class VentanaAlumnoController {
 
 		int alumnoId = Session.getUserId();
 
-		List<Nota> desdeBD = NotasDAO.obtenerNotasAlumno(alumnoId);
+		List<Nota> desdeBD = NotasDAO.obtenerNotasAlumno(alumnoId); // traemos notas desde la bdd
+		// llenamos tabla
 		datosOriginales = FXCollections.observableArrayList(desdeBD);
 		tablaNotas.setItems(datosOriginales);
 
-		// Rellenar combo con "Todos" + módulos encontrados
+		// rellenar combo con "Todos" + módulos encontrados
 		cmbModulos.getItems().clear();
 		cmbModulos.getItems().add("Todos");
 		for (Nota n : datosOriginales) {

@@ -35,27 +35,27 @@ public class VentanaProfesorController {
 	@FXML
 	public void initialize() {
 
+		// configuramos columnas
 		colAlumno.setCellValueFactory(new PropertyValueFactory<>("alumno"));
 		colNota.setCellValueFactory(new PropertyValueFactory<>("nota"));
 
-		// Que las columnas ocupen todo el ancho
+		// que las columnas ocupen todo el ancho
 		tablaAlumnos.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-		// Cargar módulos del profesor logueado
+		// cargar módulos del profesor logueado
 		int profesorId = Session.getUserId();
 		List<String> modulos = ProfesorDAO.obtenerModulosProfesor(profesorId);
 
 		cmbModulosProfesor.getItems().setAll(modulos);
 
-		// Hacer tabla/columna editables
+		// hacer tabla/columna editables (en caso de cambiar nota)
 		tablaAlumnos.setEditable(true);
 		colNota.setEditable(true);
 
-		// Permitir editar la nota como texto
+		// permitir editar la nota como texto
 		colNota.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
 
-		// IMPORTANTE: cuando confirmas la edición (ENTER o cambio de foco),
-		// copiar el valor editado al objeto de la fila.
+		// cuando se cambia una nota se guarda en el objeto AlumnoNotaRow
 		colNota.setOnEditCommit(ev -> {
 			AlumnoNotaRow fila = ev.getRowValue();
 			fila.setNota(ev.getNewValue());
@@ -75,10 +75,11 @@ public class VentanaProfesorController {
 		if (nombreModulo == null)
 			return;
 
-		moduloIdSeleccionado = ProfesorDAO.obtenerModuloIdPorNombre(nombreModulo);
+		moduloIdSeleccionado = ProfesorDAO.obtenerModuloIdPorNombre(nombreModulo); // lo convertimos a id para la bdd
 		if (moduloIdSeleccionado == null)
 			return;
 
+		// recogemos los alumnos matriculados + nota si existe y rellenamos la tabla
 		List<AlumnoNotaRow> rows = MatriculasDAO.alumnosConNotaEnModulo(moduloIdSeleccionado);
 		ObservableList<AlumnoNotaRow> data = FXCollections.observableArrayList(rows);
 		tablaAlumnos.setItems(data);
@@ -87,7 +88,7 @@ public class VentanaProfesorController {
 	@FXML
 	private void onGuardarNota() {
 
-		// Forzar cierre/commit de la celda en edición para no guardar el valor antiguo
+		// forzar cierre/commit de la celda en edición para no guardar el valor antiguo
 		if (tablaAlumnos.getEditingCell() != null) {
 			tablaAlumnos.edit(-1, null);
 		}

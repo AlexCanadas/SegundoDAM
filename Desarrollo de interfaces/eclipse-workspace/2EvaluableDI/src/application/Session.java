@@ -3,7 +3,7 @@ package application;
 public class Session {
 	private static int userId;
 	private static String nombre;
-	private static String cargo; // "Alumno" o "Profesor"
+	private static String cargo;
 
 	public static int getUserId() {
 		return userId;
