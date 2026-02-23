@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>720</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>DI 2025 - Qt Designer</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="topLayout">
+      <item>
+       <layout class="QFormLayout" name="formLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="labelDni">
+          <property name="text"><string>DNI</string></property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="txtDni"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="labelNombre">
+          <property name="text"><string>NOMBRE</string></property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="txtNombre"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="labelApellidos">
+          <property name="text"><string>APELLIDOS</string></property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="txtApellidos"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="labelDireccion">
+          <property name="text"><string>DIRECCION</string></property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLineEdit" name="txtDireccion"/>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="labelContrasena">
+          <property name="text"><string>CONTRASEÑA</string></property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLineEdit" name="txtContrasena">
+          <property name="echoMode">
+           <enum>QLineEdit::Password</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="buttonsRight">
+        <item><widget class="QPushButton" name="btnInsertar"><property name="text"><string>INSERTAR</string></property></widget></item>
+        <item><widget class="QPushButton" name="btnBorrar"><property name="text"><string>BORRAR</string></property></widget></item>
+        <item><widget class="QPushButton" name="btnModificar"><property name="text"><string>MODIFICAR</string></property></widget></item>
+        <item><widget class="QPushButton" name="btnLimpiar"><property name="text"><string>LIMPIAR</string></property></widget></item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+
+    <item>
+     <layout class="QHBoxLayout" name="searchLayout">
+      <item><widget class="QLineEdit" name="txtBuscar"/></item>
+      <item><widget class="QPushButton" name="btnBuscar"><property name="text"><string>BUSCAR</string></property></widget></item>
+      <item><widget class="QPushButton" name="btnMostrar"><property name="text"><string>MOSTRAR TODOS</string></property></widget></item>
+     </layout>
+    </item>
+
+    <item>
+     <widget class="QTableWidget" name="tabla">
+      <property name="rowCount"><number>0</number></property>
+      <property name="columnCount"><number>5</number></property>
+      <column>
+       <property name="text"><string>DNI</string></property>
+      </column>
+      <column>
+       <property name="text"><string>NOMBRE</string></property>
+      </column>
+      <column>
+       <property name="text"><string>APELLIDOS</string></property>
+      </column>
+      <column>
+       <property name="text"><string>DIRECCION</string></property>
+      </column>
+      <column>
+       <property name="text"><string>CONTRASEÑA</string></property>
+      </column>
+     </widget>
+    </item>
+
+    <item>
+     <layout class="QHBoxLayout" name="bottomLayout">
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation"><enum>Qt::Horizontal</enum></property>
+        <property name="sizeHint" stdset="0">
+         <size><width>40</width><height>20</height></size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnSalir">
+        <property name="text"><string>Salir</string></property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
