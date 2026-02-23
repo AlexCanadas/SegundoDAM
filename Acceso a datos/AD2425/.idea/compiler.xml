@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ad24-ej1-fichero" />
+        <module name="ad24-ej3-hibernate" />
+        <module name="ad24-ej2-json" />
+        <module name="ad25-ej2-hibernate" />
+        <module name="ad25-ej3-spring" />
+        <module name="ad25-ej1-json" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ad25-ej3-spring" options="-parameters" />
+    </option>
+  </component>
+</project>

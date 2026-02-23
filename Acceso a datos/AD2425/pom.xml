@@ -1,0 +1,20 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>dam.ad</groupId>
+  <artifactId>ad-2425</artifactId>
+  <version>1.0</version>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>ad24-ej1-fichero</module>
+    <module>ad24-ej2-json</module>
+    <module>ad24-ej3-hibernate</module>
+
+    <module>ad25-ej1-json</module>
+    <module>ad25-ej2-hibernate</module>
+    <module>ad25-ej3-spring</module>
+  </modules>
+</project>
