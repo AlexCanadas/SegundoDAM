@@ -8,11 +8,13 @@ public class Main {
         Puerta puerta2 = new Puerta(2, contador);
         Puerta puerta3 = new Puerta(3, contador);
 
+        // Arrancan los hilos
         puerta1.start();
         puerta2.start();
         puerta3.start();
 
         try {
+            // Join bloquea main hasta que cada hilo termine su ejecución
             puerta1.join();
             puerta2.join();
             puerta3.join();

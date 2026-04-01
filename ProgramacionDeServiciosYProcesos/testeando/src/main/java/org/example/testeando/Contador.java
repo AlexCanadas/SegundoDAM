@@ -5,6 +5,7 @@ public class Contador {
     private int puerta2 = 0;
     private int puerta3 = 0;
 
+    // Synchronized asegura que solo un hilo pueda ejecutar este método a la vez
     public synchronized void incrementar(int puerta) {
         if (puerta == 1) {
             puerta1++;

@@ -10,7 +10,7 @@ public class Puerta extends Thread {
     }
 
     @Override
-    public void run() {
+    public void run() { // Cada puerta simula la entrada de 50 personas cuando se corre .start()
         for (int i = 0; i < 50; i++) {
             contador.incrementar(numeroPuerta);
 
