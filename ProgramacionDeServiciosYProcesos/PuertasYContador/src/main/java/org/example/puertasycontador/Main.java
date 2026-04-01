@@ -1,6 +1,11 @@
 package org.example.puertasycontador;
 
 public class Main {
+//    Queremos controlar el acceso a al parque de atracciones de Madrid con tres puertas de acceso.
+//    Dicho acceso al parque está controlado por un torno independiente, que envía un evento propio a una aplicación
+//    de computador que debe contarlas y proporcionar cuando termina la actividad de las puertas el número total
+//    de visitantes que entran por cada puerta y el total de visitantes que han entrado en el parque.
+
     public static void main(String[] args) {
         Contador contador = new Contador();
 
