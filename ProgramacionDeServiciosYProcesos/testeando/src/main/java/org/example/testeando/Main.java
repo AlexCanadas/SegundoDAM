@@ -8,7 +8,7 @@ public class Main {
         Puerta puerta2 = new Puerta(2, contador);
         Puerta puerta3 = new Puerta(3, contador);
 
-        // Arrancan los hilos
+        // Arrancan los hilos, start crea un hilo nuevo y ejecuta el método run() en paralelo
         puerta1.start();
         puerta2.start();
         puerta3.start();
