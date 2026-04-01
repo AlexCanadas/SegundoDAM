@@ -1,4 +1,4 @@
-package org.example.testeando;
+package org.example.puertasycontador;
 
 public class Main {
     public static void main(String[] args) {

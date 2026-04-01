@@ -7,7 +7,7 @@
     <groupId>org.example</groupId>
     <artifactId>PuertasYContador</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>testeando</name>
+    <name>PuertasYContador</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -60,7 +60,8 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>org.example.testeando/org.example.testeando.HelloApplication</mainClass>
+                            <mainClass>org.example.puertasycontador/org.example.puertasycontador.HelloApplication
+                            </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

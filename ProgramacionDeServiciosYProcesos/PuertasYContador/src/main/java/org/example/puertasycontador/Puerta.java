@@ -1,4 +1,4 @@
-package org.example.testeando;
+package org.example.puertasycontador;
 
 public class Puerta extends Thread {
     private int numeroPuerta;

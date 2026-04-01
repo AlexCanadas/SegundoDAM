@@ -1,4 +1,4 @@
-package org.example.testeando;
+package org.example.puertasycontador;
 
 public class Contador {
     private int puerta1 = 0;
