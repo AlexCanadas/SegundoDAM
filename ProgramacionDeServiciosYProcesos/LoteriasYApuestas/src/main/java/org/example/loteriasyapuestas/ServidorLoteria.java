@@ -7,6 +7,10 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+//El servidor de loterías y apuestas del Estado tiene un archivo con el número precio de la lotería Nacional
+//del día de hoy. El cliente se conectará contra el servidor y le pasará el número que jugaba hoy para dicho
+//sorteo. El servidor deberá contestar si ha sido el afortunado apremiado o no
+
 public class ServidorLoteria {
     public static void main(String[] args) {
         int puerto = 5000; // Puerto en el que el servidor escuchará las conexiones
