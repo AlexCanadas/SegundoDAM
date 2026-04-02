@@ -14,7 +14,7 @@ public class ClienteBanco {
 //    a.	Ingresar sobre la cuenta.
 //    b.	Retirar de la cuenta.
 //    c.	Ver el saldo actual.
-    
+
     public static void main(String[] args) {
 
         String host = "localhost";
