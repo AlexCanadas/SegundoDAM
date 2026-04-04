@@ -22,7 +22,7 @@ public class DatosPersonaController {
     @FXML
     private TextField txtDireccion;
     @FXML
-    private TextField txtContrasena;
+    private javafx.scene.control.PasswordField txtContrasena;
     @FXML
     private TextField txtBuscar;
 
