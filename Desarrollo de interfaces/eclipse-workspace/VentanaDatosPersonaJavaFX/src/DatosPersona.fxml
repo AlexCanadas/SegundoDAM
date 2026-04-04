@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="application.DatosPersonaController">
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <children>
+
+        <GridPane hgap="10" vgap="10">
+            <columnConstraints>
+                <ColumnConstraints minWidth="100" prefWidth="120"/>
+                <ColumnConstraints hgrow="ALWAYS" minWidth="150" prefWidth="200"/>
+                <ColumnConstraints minWidth="120" prefWidth="140"/>
+            </columnConstraints>
+
+            <children>
+                <Label text="DNI" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtDni" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Button fx:id="btnInsertar" text="INSERTAR" onAction="#insertar" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+
+                <Label text="NOMBRE" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtNombre" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Button fx:id="btnBorrar" text="BORRAR" onAction="#borrar" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+
+                <Label text="APELLIDOS" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtApellidos" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Button fx:id="btnModificar" text="MODIFICAR" onAction="#modificar" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+
+                <Label text="DIRECCION" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtDireccion" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                <Button fx:id="btnLimpiar" text="LIMPIAR" onAction="#limpiar" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+
+                <Label text="CONTRASEÑA" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtContrasena" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            </children>
+        </GridPane>
+
+        <HBox spacing="10">
+            <children>
+                <TextField fx:id="txtBuscar" promptText="Buscar..." prefWidth="200"/>
+                <Button fx:id="btnBuscar" text="BUSCAR" onAction="#buscar"/>
+                <Button fx:id="btnMostrarTodos" text="MOSTRAR TODOS" onAction="#mostrarTodos"/>
+            </children>
+        </HBox>
+
+        <TableView fx:id="tablaPersonas" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colDni" text="DNI" prefWidth="100"/>
+                <TableColumn fx:id="colNombre" text="NOMBRE" prefWidth="120"/>
+                <TableColumn fx:id="colApellidos" text="APELLIDOS" prefWidth="150"/>
+                <TableColumn fx:id="colDireccion" text="DIRECCION" prefWidth="150"/>
+                <TableColumn fx:id="colContrasena" text="CONTRASEÑA" prefWidth="120"/>
+            </columns>
+        </TableView>
+
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <children>
+                <Button fx:id="btnSalir" text="SALIR" onAction="#salir"/>
+            </children>
+        </HBox>
+
+    </children>
+</VBox>
