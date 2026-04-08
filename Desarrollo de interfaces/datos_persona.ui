@@ -6,13 +6,225 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>820</width>
+    <height>620</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Datos Persona</string>
   </property>
+  <layout class="QVBoxLayout" name="verticalLayoutPrincipal">
+   <property name="spacing">
+    <number>10</number>
+   </property>
+   <property name="leftMargin">
+    <number>10</number>
+   </property>
+   <property name="topMargin">
+    <number>10</number>
+   </property>
+   <property name="rightMargin">
+    <number>10</number>
+   </property>
+   <property name="bottomMargin">
+    <number>10</number>
+   </property>
+   <item>
+    <widget class="QWidget" name="widgetFormulario">
+     <layout class="QGridLayout" name="gridLayoutFormulario">
+      <property name="horizontalSpacing">
+       <number>10</number>
+      </property>
+      <property name="verticalSpacing">
+       <number>10</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="labelDni">
+        <property name="text">
+         <string>DNI</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="txtDni"/>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="btnInsertar">
+        <property name="text">
+         <string>INSERTAR</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="labelNombre">
+        <property name="text">
+         <string>NOMBRE</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="txtNombre"/>
+      </item>
+      <item row="1" column="2">
+       <widget class="QPushButton" name="btnBorrar">
+        <property name="text">
+         <string>BORRAR</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="labelApellidos">
+        <property name="text">
+         <string>APELLIDOS</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="txtApellidos"/>
+      </item>
+      <item row="2" column="2">
+       <widget class="QPushButton" name="btnModificar">
+        <property name="text">
+         <string>MODIFICAR</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="labelDireccion">
+        <property name="text">
+         <string>DIRECCION</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="txtDireccion"/>
+      </item>
+      <item row="3" column="2">
+       <widget class="QPushButton" name="btnLimpiar">
+        <property name="text">
+         <string>LIMPIAR</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="labelContrasena">
+        <property name="text">
+         <string>CONTRASEÑA</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="txtContrasena">
+        <property name="echoMode">
+         <enum>QLineEdit::Password</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <spacer name="horizontalSpacerFormulario">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="widgetBusqueda">
+     <layout class="QHBoxLayout" name="horizontalLayoutBusqueda">
+      <item>
+       <widget class="QLineEdit" name="txtBuscar">
+        <property name="placeholderText">
+         <string>Buscar...</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnBuscar">
+        <property name="text">
+         <string>BUSCAR</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnMostrarTodos">
+        <property name="text">
+         <string>MOSTRAR TODOS</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTableWidget" name="tableWidget">
+     <property name="columnCount">
+      <number>5</number>
+     </property>
+     <property name="rowCount">
+      <number>0</number>
+     </property>
+     <column>
+      <property name="text">
+       <string>DNI</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>NOMBRE</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>APELLIDOS</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>DIRECCION</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>CONTRASEÑA</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="widgetSalir">
+     <layout class="QHBoxLayout" name="horizontalLayoutSalir">
+      <item>
+       <spacer name="horizontalSpacerSalir">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnSalir">
+        <property name="text">
+         <string>SALIR</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>
