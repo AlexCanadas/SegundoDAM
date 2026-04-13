@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Main {
+//    Sea el fichero de texto contenido en el fichero ejercicio_uno.txt, crea un proyecto en java que permita leer
+//    todas las líneas de este y mostrarlas por consola
     public static void main(String[] args) {
         // ruta del fichero
         String ruta = "ejercicio_uno.txt";
