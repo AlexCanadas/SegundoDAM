@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "192108089795",
+    "project_id": "ligaapp-c1e0a",
+    "storage_bucket": "ligaapp-c1e0a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192108089795:android:50dc2a5988d143327bad76",
+        "android_client_info": {
+          "package_name": "com.example.ligaapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3fDPiRT9rxQmz9bHbquojjkROwJxXJ3A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

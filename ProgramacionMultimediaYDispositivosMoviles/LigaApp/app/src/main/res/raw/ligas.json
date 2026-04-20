@@ -1,0 +1,26 @@
+[
+  {
+    "nombre": "La Liga",
+    "equipos": [
+      { "nombre": "Real Madrid", "imagen": "" },
+      { "nombre": "FC Barcelona", "imagen": "" },
+      { "nombre": "Atletico de Madrid", "imagen": "" }
+    ]
+  },
+  {
+    "nombre": "Premier League",
+    "equipos": [
+      { "nombre": "Manchester City", "imagen": "" },
+      { "nombre": "Arsenal", "imagen": "" },
+      { "nombre": "Liverpool", "imagen": "" }
+    ]
+  },
+  {
+    "nombre": "Serie A",
+    "equipos": [
+      { "nombre": "Inter de Milan", "imagen": "" },
+      { "nombre": "AC Milan", "imagen": "" },
+      { "nombre": "Juventus", "imagen": "" }
+    ]
+  }
+]
