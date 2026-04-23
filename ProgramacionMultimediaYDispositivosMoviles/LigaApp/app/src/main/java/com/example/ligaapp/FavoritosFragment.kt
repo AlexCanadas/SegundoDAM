@@ -9,12 +9,19 @@ import androidx.recyclerview.widget.RecyclerView
 
 class FavoritosFragment : Fragment(R.layout.fragment_favoritos) {
 
+    private lateinit var recycler: RecyclerView
+    private lateinit var tvVacio: TextView
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recycler = view.findViewById<RecyclerView>(R.id.recyclerFavoritos)
-        val tvVacio = view.findViewById<TextView>(R.id.tvSinFavoritos)
+        recycler = view.findViewById(R.id.recyclerFavoritos)
+        tvVacio = view.findViewById(R.id.tvSinFavoritos)
 
+        actualizarVista()
+    }
+
+    private fun actualizarVista() {
         if (FavoritosManager.favoritos.isEmpty()) {
             tvVacio.visibility = View.VISIBLE
             recycler.visibility = View.GONE
@@ -22,7 +29,10 @@ class FavoritosFragment : Fragment(R.layout.fragment_favoritos) {
             tvVacio.visibility = View.GONE
             recycler.visibility = View.VISIBLE
             recycler.layoutManager = LinearLayoutManager(requireContext())
-            recycler.adapter = EquipoAdapter(FavoritosManager.favoritos)
+            recycler.adapter = EquipoAdapter(FavoritosManager.favoritos) { equipo ->
+                FavoritosManager.toggleFavorito(equipo)
+                actualizarVista()
+            }
         }
     }
 }

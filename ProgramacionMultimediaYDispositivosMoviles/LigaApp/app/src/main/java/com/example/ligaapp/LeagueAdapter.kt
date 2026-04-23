@@ -23,7 +23,7 @@ class LeagueAdapter(
 
     override fun onBindViewHolder(holder: LeagueViewHolder, position: Int) {
         val liga = ligas[position]
-        holder.tvNombreLiga.text = liga.nombre
+        holder.tvNombreLiga.text = liga.strLeague
         holder.itemView.setOnClickListener { onLigaClick(liga) }
     }
 

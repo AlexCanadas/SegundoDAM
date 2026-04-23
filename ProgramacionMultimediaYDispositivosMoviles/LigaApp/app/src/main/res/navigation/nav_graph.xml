@@ -41,6 +41,10 @@
         android:label="Equipos">
 
         <argument
+            android:name="ligaId"
+            app:argType="string" />
+
+        <argument
             android:name="ligaNombre"
             app:argType="string" />
 
@@ -50,5 +54,10 @@
         android:id="@+id/favoritosFragment"
         android:name="com.example.ligaapp.FavoritosFragment"
         android:label="Favoritos" />
+
+    <action
+        android:id="@+id/action_global_favoritos"
+        app:destination="@id/favoritosFragment"
+        app:launchSingleTop="true" />
 
 </navigation>

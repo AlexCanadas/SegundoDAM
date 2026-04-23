@@ -1,6 +1,7 @@
 package com.example.ligaapp
 
 data class Liga(
-    val nombre: String,
-    val equipos: List<Equipo>
+    val idLeague: String,
+    val strLeague: String,
+    val strSport: String
 )

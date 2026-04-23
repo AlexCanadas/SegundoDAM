@@ -10,12 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 class EquipoAdapter(
-    private val equipos: List<Equipo>
+    private val equipos: List<Equipo>,
+    private val onFavoritoClick: (Equipo) -> Unit
 ) : RecyclerView.Adapter<EquipoAdapter.EquipoViewHolder>() {
 
     class EquipoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val ivLogo: ImageView = itemView.findViewById(R.id.ivLogoEquipo)
-        val tvNombre: TextView = itemView.findViewById(R.id.tvNombreEquipo)
+        val tvNombreEquipo: TextView = itemView.findViewById(R.id.tvNombreEquipo)
+        val ivLogoEquipo: ImageView = itemView.findViewById(R.id.ivLogoEquipo)
         val btnFavorito: ImageButton = itemView.findViewById(R.id.btnFavorito)
     }
 
@@ -27,30 +28,24 @@ class EquipoAdapter(
 
     override fun onBindViewHolder(holder: EquipoViewHolder, position: Int) {
         val equipo = equipos[position]
-        holder.tvNombre.text = equipo.nombre
 
-        if (equipo.imagen.isNotEmpty()) {
-            Glide.with(holder.itemView.context)
-                .load(equipo.imagen)
-                .placeholder(R.drawable.ic_launcher_foreground)
-                .into(holder.ivLogo)
-        } else {
-            holder.ivLogo.setImageResource(R.drawable.ic_launcher_foreground)
-        }
+        holder.tvNombreEquipo.text = equipo.strTeam
 
-        actualizarIconoFavorito(holder, equipo)
+        Glide.with(holder.itemView.context)
+            .load(equipo.strBadge)
+            .placeholder(android.R.drawable.ic_menu_gallery)
+            .error(android.R.drawable.ic_menu_gallery)
+            .into(holder.ivLogoEquipo)
+
+        val starRes = if (FavoritosManager.esFavorito(equipo))
+            android.R.drawable.btn_star_big_on
+        else
+            android.R.drawable.btn_star_big_off
+        holder.btnFavorito.setImageResource(starRes)
 
         holder.btnFavorito.setOnClickListener {
-            FavoritosManager.toggleFavorito(equipo)
-            actualizarIconoFavorito(holder, equipo)
-        }
-    }
-
-    private fun actualizarIconoFavorito(holder: EquipoViewHolder, equipo: Equipo) {
-        if (FavoritosManager.esFavorito(equipo)) {
-            holder.btnFavorito.setImageResource(android.R.drawable.btn_star_big_on)
-        } else {
-            holder.btnFavorito.setImageResource(android.R.drawable.btn_star_big_off)
+            onFavoritoClick(equipo)
+            notifyItemChanged(position)
         }
     }
 

@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.menu_favoritos -> {
-                navController.navigate(R.id.favoritosFragment)
+                navController.navigate(R.id.action_global_favoritos)
                 true
             }
             R.id.menu_salir -> {
